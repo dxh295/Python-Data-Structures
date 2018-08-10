@@ -1,0 +1,26 @@
+name = input("Enter file:")
+handle = open(name)
+counts={}
+
+for i in handle:
+    a=i.rstrip()
+    b=a.split()
+    if len(b)<3:
+        continue
+    if b[0]!= 'From':
+        continue
+    c=b[1]
+    d=c.split()
+    for word in d:
+        counts[word]=counts.get(word,0)+1
+    
+bigcount = None
+bigword = None
+
+for word, count in counts.items():
+    if bigcount is None or count>bigcount:
+        bigcount=count
+        bigword=word
+        
+print(bigword,bigcount)
+
