@@ -1,0 +1,21 @@
+name = input("Enter file:")
+if len(name) < 1 : name = "mbox-short.txt"
+handle = open(name)
+li=[]
+counts={}
+
+for i in handle:
+    a=i.rstrip()
+    b=a.split()
+    if len(b)<3:
+        continue
+    if b[0]!='From':
+        continue
+    c=b[5]
+    d=c[:2]
+    counts[d[:]] = counts.get(d[:], 0) + 1
+
+e=sorted([(k,v) for k,v in counts.items()])
+
+for k,v in e:
+    print(k,v)
